@@ -13,20 +13,24 @@ class ComicSeeder extends Seeder
      */
     public function run(): void
     {
-        $comics = config('comic_db');
+        $comic = config('comic_db');
 
-        foreach ($comics as $comic_item) {
-            $comics = new Comics();
-            $comics->title = $comic_item['title'];
-            $comics->description = $comic_item['description'];
-            $comics->price = $comic_item['price'];
-            $comics->series = $comic_item['series'];
-            $comics->sale_date = $comic_item['sale__date'];
-            $comics->type = $comic_item['type'];
-            $comics->artists = $comic_item['artists'];
-            $comics->writers = $comic_item['writers'];
+       
+
+        foreach ($comic as $comic_item) {
+            $comic = new Comics();
+         
+            $comic->title = $comic_item['title'];
+            $comic->description = $comic_item['description'];
+            $comic->thumb = $comic_item['thumb'];
+            $comic->price = $comic_item['price'];
+            $comic->series = $comic_item['series'];
+            $comic->sale_date = $comic_item['sale_date'];
+            $comic->type = $comic_item['type'];
+            $comic->artists = implode(',',$comic_item['artists']);
+            $comic->writers = implode(',',$comic_item['writers']);
             
-            $comics->save();
+            $comic->save();
         }
     }
 }
