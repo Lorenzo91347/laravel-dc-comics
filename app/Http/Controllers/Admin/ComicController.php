@@ -35,18 +35,23 @@ class ComicController extends Controller
     {
         $data = $request->all();
 
-        $comic = new Comics();
+        $newComic = new Comics();
 
-        $comic->title = $data['title'];
-        $comic->description = $data['description'];
-        $comic->thumb = $data['thumb'];
-        $comic->price = $data['price'];
-        $comic->series = $data['series'];
-        $comic->sale_date = $data['sale_date'];
-        $comic->type = $data['type'];
+        $newComic->title = $data['title'];
+        $newComic->description = $data['description'];
+        $newComic->thumb = $data['thumb'];
+        $newComic->price = $data['price'];
+        $newComic->series = $data['series'];
+        $newComic->sale_date = $data['sale_date'];
+        $newComic->type = $data['type'];
+        $newComic->type = $data['artists'];
+        $newComic->type = $data['writers'];
        
 
-        $comic->save();
+        $newComic->save();
+
+        return redirect()->route('comics.show', $newComic -> id);
+        
     }
 
     /**
@@ -79,9 +84,11 @@ class ComicController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Comics $comics)
     {
-        //
+        $comics->delete();
+
+        return redirect()->route('comics.home');
     }
 }
 
