@@ -12,10 +12,9 @@
     <ul>
         @foreach ($comics as $comic)
         <li>{{$comic -> title }}</li>
-        <li>{{$comic -> thumb }}</li>
         <li>{{$comic -> price }}</li>
         <li>{{$comic -> series }}</li>
-        <form action="{{route('comics.destroy',['id'=>$comics->id])}}" method="POST">
+        <form action="{{route('comics.destroy',$comic)}}" method="POST">
         @csrf
         @method('DELETE')
 

@@ -88,7 +88,7 @@ class ComicController extends Controller
     {
         $comics->delete();
 
-        return redirect()->route('comics.home');
+        return redirect()->route('comics.index');
     }
 }
 
