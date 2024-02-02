@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('/', [ComicController::class, 'index']);
+
 Route::get('/', function () {
-    return view('list');
+    return view('home');
 });
+
+
 Route::resource('comics', ComicController::class);
