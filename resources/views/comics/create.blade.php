@@ -16,43 +16,50 @@
             @csrf
             <div class="mb-3">
                 <label class="form-label">Title</label>
-                <input type="text" class="form-control" name="title" value="{{old('title', $comic->title)}}">
+                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{old('title')}}">
+                @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">Description</label>
-                <textarea class="form-control" name="description" id="" cols="30" rows="10">{{old('description', $comic->description)}}</textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="" cols="30" rows="10">{{old('description' )}}</textarea>
+                @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">Thumb URL</label>
-                <input type="text" class="form-control" name="thumb" value="{{old('thumb', $comic->thumb)}}">
+                <input type="text" class="form-control" name="thumb" value="{{old('thumb' )}}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Price</label>
-                <input type="text" class="form-control" name="price" value="{{old('price', $comic->price)}}">
+                <input type="text" class="form-control" name="price" value="{{old('price' )}}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Series Name</label>
-                <input type="text" class="form-control" name="series" value="{{old('series', $comic->series)}}">
+                <input type="text" class="form-control" name="series" value="{{old('series' )}}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Sale Date</label>
-                <input type="text" class="form-control" name="sale_date" value="{{old('sale_date', $comic->sale_date)}}">
+                <input type="text" class="form-control" name="sale_date" value="{{old('sale_date')}}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Type</label>
-                <input type="text" class="form-control" name="type" value="{{old('type', $comic->type)}}">
+                <input type="text" class="form-control" name="type" value="{{old('type')}}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Artists</label>
-                <input type="text" class="form-control" name="artists" value="{{old('artists', $comic->artists)}}">
+                <input type="text" class="form-control" name="artists" value="{{old('artists')}}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Writers</label>
-                <input type="text" class="form-control" name="writers" value="{{old('writers', $comic->writers)}}">
+                <input type="text" class="form-control" name="writers" value="{{old('writers')}}">
             </div>
            
 
             <button type="submit" class="btn btn-primary">Submit</button>
+           
         </form>
     </div>
 

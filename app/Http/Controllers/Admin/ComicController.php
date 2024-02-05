@@ -34,7 +34,6 @@ class ComicController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //$data = $this -> validation($request->all());
 
         $data = $request->validated();
 
@@ -43,6 +42,7 @@ class ComicController extends Controller
         $newComic -> fill($data);
        
         $newComic->save();
+
 
         return redirect()->route('comics.show', $newComic -> id);
         
