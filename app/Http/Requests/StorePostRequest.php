@@ -22,7 +22,15 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|unique:comics|max:50',
+            'description' => 'required|unique:comics',
+            'thumb' => 'required|unique:comics',
+            'price' => 'required',
+            'series' => 'required',
+            'sale_date' => 'required',
+            'type' => 'required',
+            'artists' => 'required',
+            'writers' => 'required',
         ];
     }
 }

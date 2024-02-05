@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -31,23 +32,16 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        $data = $request->all();
+        //$data = $this -> validation($request->all());
+
+        $data = $request->validated();
 
         $newComic = new Comic();
 
-        $newComic->title = $data['title'];
-        $newComic->description = $data['description'];
-        $newComic->thumb = $data['thumb'];
-        $newComic->price = $data['price'];
-        $newComic->series = $data['series'];
-        $newComic->sale_date = $data['sale_date'];
-        $newComic->type = $data['type'];
-        $newComic->artists = $data['artists'];
-        $newComic->writers = $data['writers'];
+        $newComic -> fill($data);
        
-
         $newComic->save();
 
         return redirect()->route('comics.show', $newComic -> id);
