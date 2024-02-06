@@ -33,4 +33,17 @@ class StorePostRequest extends FormRequest
             'writers' => 'required',
         ];
     }
+    /**
+ * Get the error messages for the defined validation rules.
+ *
+ * @return array<string, string>
+ */
+public function messages(): array
+{
+    return [
+        'title.required' => 'A title is required',
+        'description.required' => 'A message is required',
+        'thumb.required' => 'This field must have a valid Url'
+    ];
+}
 }
