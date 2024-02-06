@@ -26,11 +26,11 @@ class StorePostRequest extends FormRequest
             'description' => 'required|unique:comics',
             'thumb' => 'required|unique:comics',
             'price' => 'required',
-            'series' => 'required',
+            'series' => 'required|min:5',
             'sale_date' => 'required',
-            'type' => 'required',
-            'artists' => 'required',
-            'writers' => 'required',
+            'type' => 'required|min:4',
+            'artists' => 'required|min:5',
+            'writers' => 'required|min:5',
         ];
     }
     /**
@@ -43,7 +43,13 @@ public function messages(): array
     return [
         'title.required' => 'A title is required',
         'description.required' => 'A message is required',
-        'thumb.required' => 'This field must have a valid Url'
+        'thumb.required' => 'This field must have a valid Url',
+        'price.required' => 'Price must have a decimal format.e.g. 00.00',
+        'series.required' => 'Min.5 letters for this field',
+        'sale_date.required' => 'This field must be in American format,e.g. YYYY/MM/DD',
+        'type.required' => 'This field must have a valid Url',
+        'artists.required' => 'Min.5 letters for this field',
+        'writers.required' => 'Min.5 letters for this field',
     ];
 }
 }
